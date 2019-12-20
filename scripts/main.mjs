@@ -45,7 +45,7 @@ import { decode } from './qrclient.js'
         if(url === undefined) return;
         if('ga' in window) ga('send', 'event', 'urlfound');
         if('vibrate' in navigator) navigator.vibrate([200]);
-
+        
         qrCodeManager.showDialog(url);
       }
     };
@@ -364,7 +364,7 @@ import { decode } from './qrclient.js'
       }
     };
 
-    this.getDimensions = function() {
+    this.getDimensions = function() {      
       return {
         width: videoElement.videoWidth,
         height: videoElement.videoHeight
@@ -399,7 +399,7 @@ import { decode } from './qrclient.js'
             cb(cameras);
           })
           .catch(error => {
-            console.error("Enumeration Error", error);
+            console.error("Enumeration Error", error); 
           });
       }
       else if('getSources' in MediaStreamTrack) {
@@ -435,7 +435,7 @@ import { decode } from './qrclient.js'
       currentCamera = idx;
       var params;
       var videoSource = cameras[idx];
-
+      
       //Cancel any pending frame analysis
       cancelAnimationFrame(animationFrameId);
 
@@ -532,7 +532,7 @@ import { decode } from './qrclient.js'
 
     var cameras = [];
     var prevCoordinates = 0;
-
+    
     sourceManager.onframeready = function(frameData) {
       // Work out which part of the video to capture and apply to canvas.
       context.drawImage(frameData, sx, sy, sWidth, sHeight, 0, 0, dWidth, dHeight);
